@@ -1,0 +1,46 @@
+﻿@model WebApplication1.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>تفاصيل</h2>
+
+<table style="font-size:20px;" class="table table-bordered" >
+    <tr style="display:none"></tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.Name):<span style="font-weight:bold">  @Html.DisplayFor(model => model.Name)</span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.SSNNew) : <span style="font-weight:bold">@Html.DisplayFor(model => model.SSNNew)</span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.BirthDate):<span style="font-weight:bold">  @Html.DisplayFor(model => model.BirthDate)</span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.Shepherd) : <span style="font-weight:bold">@Html.DisplayFor(model => model.Shepherd)</span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.isalife):<span style="font-weight:bold">  @Html.DisplayFor(model => model.isalife)</span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.DateCreated) : <span style="font-weight:bold">@Html.DisplayFor(model => model.DateCreated)</span>
+        </td>
+    </tr>
+</table>
+<br />
+<p>
+    @Html.ActionLink("تعديل", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("عودة إلي قائمة المرضي", "Index")
+</p>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>الفئات</h2>*@
+<br />
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            @Html.ActionLink("إضافة فئة جديدة", "Create", null,htmlAttributes: new { @class = "btn btn-primary" })
+
+        }
+ 
+    }
+
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th class="text-right">
+            @Html.DisplayName("الفئة")
+        </th>
+        @if (Request.IsAuthenticated)
+        {
+            if (User.IsInRole("Administrator"))
+            {
+                <th style="width:235px;">
+
+                </th>
+
+            }
+            
+
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @if (Request.IsAuthenticated)
+                {
+                    if (User.IsInRole("Administrator"))
+                    {<td style="width:235px;">
+
+    @Html.ActionLink("تعديل", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("تفاصيل", "Details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-success" }) |
+    @Html.ActionLink("حذف", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-danger" })
+
+</td>
+
+                }
+                
+
+                }
+        </tr>
+    }
+
+</table>

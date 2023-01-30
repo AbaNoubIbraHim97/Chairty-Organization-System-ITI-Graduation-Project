@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WebApplication1.Models.Donations>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>ٌقائمة التبرعات</h2>*@
+
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            @Html.ActionLink("إضافة تبرع جديد", "Create", null,htmlAttributes: new { @class = "btn btn-primary" })
+
+        }
+        if (User.IsInRole("المسئولون"))
+        {
+            @Html.ActionLink("إضافة تبرع جديد", "Create", null,htmlAttributes: new { @class = "btn btn-primary" })
+        }
+
+    }
+
+</p>
+<table class="table">
+    <tr class="text-right">
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.DonarName)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.RecieverName)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.Value)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        @if (Request.IsAuthenticated)
+        {
+            if (User.IsInRole("Administrator"))
+            {
+                <th>
+
+                </th>
+
+            }
+            if (User.IsInRole("المسئولون"))
+            {
+                <th>
+
+                </th>
+            }
+
+        }
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.DonarName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RecieverName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Value)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateCreated)
+    </td>
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("Administrator"))
+        {
+<td>
+    @Html.ActionLink("تعديل", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("تفاصيل", "Details", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success" }) |
+    @Html.ActionLink("حذف", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+
+</td>
+
+        }
+        if (User.IsInRole("المسئولون"))
+        {
+<td>
+
+    @Html.ActionLink("تعديل", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("تفاصيل", "Details", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success" }) |
+    @Html.ActionLink("حذف", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+
+</td>
+        }
+
+    }
+</tr>
+}
+
+</table>

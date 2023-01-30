@@ -1,0 +1,112 @@
+﻿@model List<WebApplication1.Models.Patient>
+@{
+    ViewBag.Title = "BulkData";
+}
+
+<h2>الصرف الشهري في المرضي</h2>
+
+@using (Html.BeginForm("BulkData", "Patients", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            @*<th class="text-center">اسم المريض</th>*@
+            @*<th class="text-center"> <input type="checkbox" onClick="toggle(this)" /> تحديد الكل</th>*@
+            <th class="text-center">التكلفة الكلية للأدوية</th>
+        </tr>
+    </thead>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        int j = 0;
+        foreach (var i in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.TextBoxFor(a => a[j].ID, null, htmlAttributes: new { id = "text1" })
+                </td>
+                @*<td style="display:none" class="text-center">
+                        @Html.TextBoxFor(a => a[j].Name, null, htmlAttributes: new { id = "text2" })
+
+                    </td>*@
+                @*<td></td>*@
+                <td class="text-center">
+                    @Html.TextBoxFor(a => a[j].PMTotalcost, null, htmlAttributes: new { id = "text3" })
+
+                </td>
+                @*<td class="text-center">
+                        @if (j > 0)
+                        {
+                            <a href="#" class="remove">Delete</a>
+                        }
+                    </td>*@
+
+            </tr>
+              j++;
+        }///
+    }
+
+ 
+</table>
+    <input type="submit" class="btn btn-info"  value="إضافة" />
+}
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script language="javascript">
+
+            $(document).ready(function () {
+
+                //1. Add new row
+                $("#addNew").click(function (e) {
+                    e.preventDefault();
+                   
+                     var e1 = document.getElementById("text1");
+                    var strUser11 = parseInt(e1.innerHTML, 10);
+                     var e3 = document.getElementById("text3");
+                    var strUser = parseInt(e3.innerHTML, 10);
+                    $.each($trNew.find(':input'), function (i, val) {
+                        // Replaced Name
+                        
+                        var type = $(this).attr('id');
+                        if (type.toLowerCase() == "text1") {
+                            $(this).attr('value', strUser11);
+                        }
+                        
+                        var type = $(this).attr('id');
+                        if (type.toLowerCase() == "text3") {
+                            $(this).attr('value', strUser33);
+                        }
+                        $(this).removeClass("input-validation-error");
+                    });
+                    // Re-assign Validation
+                    var form = $("form")
+                        .removeData("validator")
+                        .removeData("unobtrusiveValidation");
+                    $.validator.unobtrusive.parse(form);
+                });
+
+                // 2. Remove
+                //$('a.remove').live("click", function (e) {
+                //    e.preventDefault();
+                //    $(this).parent().parent().remove();
+                //});
+
+            });
+
+
+            function removeRow(oButton) {
+                var empTab = document.getElementById('dataTable');
+                empTab.deleteRow(oButton.parentNode.parentNode.rowIndex); // button -> td -> tr.
+            }
+            function removeRow1(oButton) {
+
+                var empTab = document.getElementById('empTable1');
+                empTab.deleteRow(oButton.parentNode.parentNode.rowIndex); // button -> td -> tr.
+                removeRow(oButton);
+            }
+        </script>
+    }

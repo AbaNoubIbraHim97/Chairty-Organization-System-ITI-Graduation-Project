@@ -1,0 +1,25 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>تفاصيل</h2>
+
+<table style="font-size:20px;" class="table table-bordered">
+    <tr style="display:none"></tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayName("اسم الفئة") :<span style="font-weight:bold">
+                @Html.DisplayFor(model => model.Name)
+            </span>
+        </td>
+    </tr>
+
+</table>
+<br />
+
+<p>
+    @Html.ActionLink("تعديل", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("عودة إلي قائمة الفئات", "Index")
+</p>
+

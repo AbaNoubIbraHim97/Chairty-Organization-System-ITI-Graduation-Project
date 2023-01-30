@@ -1,0 +1,232 @@
+﻿@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+body {
+    padding-top: 50px;
+    padding-bottom: 0px;
+    font-size: 15px;
+    font-family: 'Droid Arabic Kufi', serif;
+    background: #ecf0f5;
+}
+
+table tr:first-child{
+    background:lightgray;
+    color:black;
+}
+table tr:hover {
+    background: white;
+    color: #337ab7;
+    font-weight:bold;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-right:0px;
+    margin-left:0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+#myNav {
+    color: white;
+    background-color: #3d8dbc;
+}
+.f {
+    
+    height: 609px;
+    font-size: 17px;
+    position: fixed;
+    background-color: #343a40;
+
+}
+#logo {
+    text-align:center;
+    font-weight:bolder;
+    font-size:25px;
+    margin-right:-110px;
+    width:225px;
+    color: white;
+    background-color: #367fa9
+}
+#myUl li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#myUl2 li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+#myUl3 li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+#myUl li:hover {
+    background-color: #367fa9;
+    color: #babec7;
+}
+#myUl2 li:hover {
+    background-color: #367fa9;
+    color: #babec7;
+}
+/*#myUl li a:hover {
+    color: white;
+}*/
+#ul li a {
+    text-decoration: none;
+    color: #babec7;
+}
+
+#ul li:hover {
+    background-color: #367fa9;
+    color: white;
+}
+
+#ul li a:hover {
+    font-weight:bold;
+    color: white;
+}
+#ul li{
+    padding:7px;
+    list-style-type:none;
+    margin-right:-35px;
+}
+.Foot {
+    /*position: fixed;*/
+    /*left: 0;
+    bottom: 0;*/
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    height: 50px;
+}
+
+.myfooter {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.subfooter {
+    background-color: darkblue;
+    padding: 10px;
+    color:white;
+    text-align:center;
+}
+
+.user_card {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #ecf0f5;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+.brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    background: #60a3bc;
+    margin-right: 80px;
+    padding: 10px;
+    text-align: center;
+}
+
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.form_container {
+    margin-top: 100px;
+}
+
+.login_btn {
+    width: 100%;
+    background: #3d8dbc !important;
+    color: white !important;
+    /*#c0392b*/
+}
+
+    .login_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+
+.login_container {
+    padding: 0 2rem;
+}
+
+.input-group-text {
+    background: #c0392b !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}
+
+.input_user,
+.input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #c0392b !important;
+}
+
+#CreateForm {
+    margin-top: 70px;
+    margin-right: 350px;
+    padding-bottom: 80px;
+    padding-top: 50px;
+    padding-right: 50px;
+    height: 400px;
+    width: 350px;
+    background: #ecf0f5;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#btnBlue {
+    background: #3d8dbc;
+    color: white;
+}
+#GoBack{
+    text-decoration:none;
+}

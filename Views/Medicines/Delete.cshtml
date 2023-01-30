@@ -1,0 +1,40 @@
+﻿@model WebApplication1.Models.Medicines
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+    <h2>حذف</h2>
+
+    <h3 style="color:red;">هل انت متأكد من انك تريد حذف هذا الدواء ؟</h3>
+<div>
+    <table style="font-size:20px;" class="table table-bordered">
+        <tr style="display:none"></tr>
+        @*<tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.MedicinesCategory.Name)  :  <span style="font-weight:bold">@Html.DisplayFor(model => model.MedicinesCategory.Name)</span>
+            </td>
+        </tr>*@
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.Name) :<span style="font-weight:bold"> @Html.DisplayFor(model => model.Name)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.PricePerUnit) : <span style="font-weight:bold">@Html.DisplayFor(model => model.PricePerUnit)</span>
+            </td>
+        </tr>
+
+    </table>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("العودة إلي قائمة الأدوية", "Index")
+        </div>
+    }
+</div>

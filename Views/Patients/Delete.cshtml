@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.Patient
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>حذف</h2>
+
+<h3 style="color:red;">هل انت متأكد من انك تريد حذف بيانات هذا المريض ؟</h3>
+<div>
+    <table style="font-size:20px;" class="table table-bordered">
+        <tr style="display:none"></tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.Name) :<span style="font-weight:bold"> @Html.DisplayFor(model => model.Name)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.SSNNew) : <span style="font-weight:bold">@Html.DisplayFor(model => model.SSNNew)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.BirthDate) : <span style="font-weight:bold">@Html.DisplayFor(model => model.BirthDate)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.Shepherd) : <span style="font-weight:bold">@Html.DisplayFor(model => model.Shepherd)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.isalife) : <span style="font-weight:bold">@Html.DisplayFor(model => model.isalife)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.DateCreated) : <span style="font-weight:bold">@Html.DisplayFor(model => model.DateCreated)</span>
+            </td>
+        </tr>
+    </table>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("العودة إلي قائمة المرضي", "Index")
+        </div>
+    }
+</div>

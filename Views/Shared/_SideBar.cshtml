@@ -1,0 +1,198 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("Administrator"))
+    {
+    <div class="col-md-2 f">
+        <ul id="ul">
+            <li><i class="fas fa-user-injured" style="font-size:20px ;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("المرضي", "Index", "Patients")</li>
+        </ul>
+        <hr style="margin-bottom:0px;margin-top:0px;" />
+        <ul id="ul">
+            <li><i class="fas fa-disease" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الأمراض", "Index", "Diseases")</li>
+            <li><i class="fas fa-th-list" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أصناف الأدوية", "Index", "MedicinesCategories")</li>
+            <li><i class="fas fa-pills" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الأدوية", "Index", "Medicines")</li>
+            <li><i class="fas fa-stethoscope" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("العمليات", "Index", "Surgeries")</li>
+        </ul>
+        <hr style="margin-bottom:0px;margin-top:0px;"/>
+        <ul id="ul">
+            <li><i class="fas fa-disease" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أمراض المرضي", "IndexMain", "PatientDiseases")</li>
+
+            <li><i class="fas fa-pills" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أدوية المرضي", "IndexMain", "PatientMedicineTests")</li>
+            <li><i class="fas fa-stethoscope" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("عمليات المرضي", "IndexMain", "PatientSurgeries")</li>
+        </ul>
+        <hr style="margin-bottom:0px;margin-top:0px;"/>
+        <ul id="ul">
+            <li>
+                <i class="fas fa-money-check-alt"style="font-size:20px;color:white;"></i>
+                &nbsp;&nbsp;@Html.ActionLink("الصرف المؤقت", "IndexMain", "TemporaryCashings")
+            </li>
+            <li><i class="fas fa-file-invoice-dollar" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الصرف الشهري", "Index", "MonthlyCachings")</li>
+            <li><i class="fas fa-hand-holding-usd"style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("التبرعات", "Index", "Donations")</li>
+            <li><i class="fas fa-comment-dollar"style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الرصيد", "Index", "Balances")</li>
+        </ul>
+        <hr style="margin-bottom:0px;margin-top:0px;"/>
+        <ul id="ul">
+            <li><i class="fas fa-hand-paper" style="font-size:20px;color:white;"></i>&nbsp;&nbsp;@Html.ActionLink("الفئات", "index", "roles", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li><i class="far fa-user-circle" style="font-size:20px;color:white;"></i>&nbsp;&nbsp;@Html.ActionLink("إنشاء حساب", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        </ul>
+    </div>
+    }
+    if (User.IsInRole("المسئولون"))
+    {
+<div class="col-md-2 f">
+    <ul id="ul">
+        <li>
+            <i class="fas fa-user-injured" style="font-size:20px ;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("المرضي", "Index", "Patients")
+        </li>
+    </ul>
+    <hr style="margin-bottom:0px;margin-top:0px;" />
+    <ul id="ul">
+        <li>
+            <i class="fas fa-disease" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الأمراض", "Index", "Diseases")
+        </li>
+        <li>
+            <i class="fas fa-th-list" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أصناف الأدوية", "Index", "MedicinesCategories")
+        </li>
+        <li>
+            <i class="fas fa-pills" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الأدوية", "Index", "Medicines")
+        </li>
+        <li>
+            <i class="fas fa-stethoscope" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("العمليات", "Index", "Surgeries")
+        </li>
+    </ul>
+    <hr style="margin-bottom:0px;margin-top:0px;" />
+    <ul id="ul">
+        <li>
+            <i class="fas fa-disease" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أمراض المرضي", "IndexMain", "PatientDiseases")
+        </li>
+
+        <li>
+            <i class="fas fa-pills" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أدوية المرضي", "IndexMain", "PatientMedicineTests")
+        </li>
+        <li>
+            <i class="fas fa-stethoscope" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("عمليات المرضي", "IndexMain", "PatientSurgeries")
+        </li>
+    </ul>
+    <hr style="margin-bottom:0px;margin-top:0px;" />
+    <ul id="ul">
+        <li>
+            <i class="fas fa-money-check-alt" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الصرف المؤقت", "IndexMain", "TemporaryCashings")
+        </li>
+        <li>
+            <i class="fas fa-file-invoice-dollar" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الصرف الشهري", "Index", "MonthlyCachings")
+        </li>
+        <li>
+            <i class="fas fa-hand-holding-usd" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("التبرعات", "Index", "Donations")
+        </li>
+        <li>
+            <i class="fas fa-comment-dollar" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الرصيد", "Index", "Balances")
+        </li>
+    </ul>
+    
+</div>
+    }
+    if (User.IsInRole("المشرفون"))
+    {
+<div class="col-md-2 f">
+    <ul id="ul">
+        <li>
+            <i class="fas fa-user-injured" style="font-size:20px ;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("المرضي", "Index", "Patients")
+        </li>
+    </ul>
+    <hr style="margin-bottom:0px;margin-top:0px;" />
+    <ul id="ul">
+        <li>
+            <i class="fas fa-disease" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الأمراض", "Index", "Diseases")
+        </li>
+        <li>
+            <i class="fas fa-th-list" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أصناف الأدوية", "Index", "MedicinesCategories")
+        </li>
+        <li>
+            <i class="fas fa-pills" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الأدوية", "Index", "Medicines")
+        </li>
+        <li>
+            <i class="fas fa-stethoscope" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("العمليات", "Index", "Surgeries")
+        </li>
+    </ul>
+    <hr style="margin-bottom:0px;margin-top:0px;" />
+    <ul id="ul">
+        <li>
+            <i class="fas fa-disease" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أمراض المرضي", "IndexMain", "PatientDiseases")
+        </li>
+
+        <li>
+            <i class="fas fa-pills" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("أدوية المرضي", "IndexMain", "PatientMedicineTests")
+        </li>
+        <li>
+            <i class="fas fa-stethoscope" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("عمليات المرضي", "IndexMain", "PatientSurgeries")
+        </li>
+    </ul>
+    <hr style="margin-bottom:0px;margin-top:0px;" />
+    <ul id="ul">
+        <li>
+            <i class="fas fa-money-check-alt" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الصرف المؤقت", "Index", "TemporaryCashings")
+        </li>
+        <li>
+            <i class="fas fa-file-invoice-dollar" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الصرف الشهري", "IndexMain", "MonthlyCachings")
+        </li>
+        <li>
+            <i class="fas fa-hand-holding-usd" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("التبرعات", "Index", "Donations")
+        </li>
+        <li>
+            <i class="fas fa-comment-dollar" style="font-size:20px;color:white;"></i>
+            &nbsp;&nbsp;@Html.ActionLink("الرصيد", "Index", "Balances")
+        </li>
+    </ul>
+
+</div>
+    }
+}
+else
+{
+
+}
+
+
+
+
+
+
+

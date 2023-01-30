@@ -1,0 +1,81 @@
+﻿@model WebApplication1.Models.Patient
+
+@{
+    ViewBag.Title = "Edit";
+}
+    <div id="CreateForm" >
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <br />
+            <h3 style="margin-right:15px;color:#343a40;font-weight:bold;margin-bottom:0px;">تعديل بيانات مريض</h3>
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="form-group">
+                <div class="col">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" , Placeholder = "اسم المريض"} })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    <p class="text-danger">@ViewBag.Repeat</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col">
+                    @Html.EditorFor(model => model.SSNNew, new { htmlAttributes = new { @class = "form-control", Placeholder = "الرقم القومي" } })
+                    @Html.ValidationMessageFor(model => model.SSNNew, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col">
+                    @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <div class="col">
+                    @Html.EditorFor(model => model.Shepherd, new { htmlAttributes = new { @class = "form-control", Placeholder = "رب الأسرة" } })
+                    @Html.ValidationMessageFor(model => model.Shepherd, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col">
+
+                    <div class="checkbox">
+
+                        @Html.EditorFor(model => model.isalife, "", new { @class = "col-md-2 " })
+                        @Html.ValidationMessageFor(model => model.isalife, "", new { @class = "text-danger " })
+                    </div>
+                    @Html.LabelFor(model => model.isalife, htmlAttributes: new { @class = "control-label col-md-10", Style = "margin-top:-30px;margin-left:50px;" })
+
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <div class="col">
+                    @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col">
+                    <input type="submit" value="حفظ" class="btn " id="btnBlue" />
+                    @Html.ActionLink("عودة إلي قائمة المرضي", "Index", null, htmlAttributes: new { id = "GoBack" ,Style="margin-right:10px;"})
+
+                </div>
+            </div>
+        </div>
+        }
+
+       
+</div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

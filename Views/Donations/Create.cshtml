@@ -1,0 +1,66 @@
+﻿@model WebApplication1.Models.Donations
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>إضافة تبرع</h2>
+<h6 style="color:red; font-size:15px;">ملاحظة : يتم تسجيل تاريخ التبرع بتاريخ اضافته</h6>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DonarName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DonarName, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.DonarName, htmlAttributes: new { @class = "control-label col-md-2" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RecieverName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.RecieverName, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.LabelFor(model => model.RecieverName, htmlAttributes: new { @class = "control-label col-md-2" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.LabelFor(model => model.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+    </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="إضافة" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("عودة إلي قائمة التبرعات", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

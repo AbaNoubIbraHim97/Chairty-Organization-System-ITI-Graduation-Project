@@ -1,0 +1,30 @@
+﻿@model WebApplication1.Models.Diseases
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>حذف</h2>
+<h3 style="color:red;">هل انت متأكد من انك تريد حذف هذا المرض ؟</h3>
+<div>
+    <hr />
+    <table style="font-size:20px;" class="table table-bordered">
+        <tr style="display:none"></tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.Name)  :  <span style="font-weight:bold"> @Html.DisplayFor(model => model.Name)</span>
+            </td>
+        </tr>
+    </table>
+<br />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="حذف" class="btn btn-danger" /> |
+                @Html.ActionLink("العودة إلي قائمة الأمراض", "Index")
+            </div>
+        }
+</div>

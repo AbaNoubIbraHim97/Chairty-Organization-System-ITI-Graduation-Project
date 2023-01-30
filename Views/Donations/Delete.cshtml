@@ -1,0 +1,45 @@
+﻿@model WebApplication1.Models.Donations
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>حذف</h2>
+
+<h3 style="color:red;">هل انت متأكد من انك تريد حذف هذا التبرع ؟</h3>
+<div>
+    <table style="font-size:20px;" class="table table-bordered">
+        <tr style="display:none"></tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.DonarName)  :  <span style="font-weight:bold">@Html.DisplayFor(model => model.DonarName)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.RecieverName) :<span style="font-weight:bold"> @Html.DisplayFor(model => model.RecieverName)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.Value) : <span style="font-weight:bold">@Html.DisplayFor(model => model.Value)</span>
+            </td>
+        </tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.DateCreated) :  <span style="font-weight:bold">@Html.DisplayFor(model => model.DateCreated)</span>
+            </td>
+        </tr>
+
+    </table>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("العودة إلي قائمة التبرعات", "Index")
+        </div>
+    }
+</div>

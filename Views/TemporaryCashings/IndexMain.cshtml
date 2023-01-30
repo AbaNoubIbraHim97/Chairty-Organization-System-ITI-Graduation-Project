@@ -1,0 +1,130 @@
+﻿@model IEnumerable<WebApplication1.Models.TemporaryCashing>
+@{
+    ViewBag.Title = "IndexMain";
+}
+<h3>الرصيد الحالي : @ViewBag.BalanceID ج</h3>
+
+<br />
+<form method="post" action="/TemporaryCashings/Search">
+    <div class="container-fluid">
+        <div class="row ">
+
+            <div class="col-md-3">
+                <input type="submit" value="عرض" class="btn btn-success col-md-12" />
+            </div>
+
+            <div class="col-md-3 ">
+                @Html.DropDownList("PatientID", null, htmlAttributes: new { @class = "form-control", style = "height:40px;" })
+                @Html.DropDownList("MedicineID", null, "-- أختر اسم الدواء --", htmlAttributes: new { @class = "form-control", Style = "display:none" })
+            </div>
+        </div>
+    </div>
+</form>
+
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            @Html.ActionLink("إضافة صرف مؤقت  ", "BulkData", null, htmlAttributes: new { @class = "btn btn-primary" })
+
+        }
+        if (User.IsInRole("المسئولون"))
+        {
+            @Html.ActionLink("إضافة صرف مؤقت  ", "BulkData", null, htmlAttributes: new { @class = "btn btn-primary" })
+        }
+
+    }
+
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.Patient.Name)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.Medicines.Name)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.NumberofUnites)
+        </th>
+        <th class="text-right">
+            @Html.DisplayName("تاريخ الصرف")
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        @if (Request.IsAuthenticated)
+        {
+            if (User.IsInRole("Administrator"))
+            {
+                <th>
+
+                </th>
+            }
+            if (User.IsInRole("المسئولون"))
+            {
+                <th>
+
+                </th>
+            }
+        }
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicines.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberofUnites)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+
+
+            @if (Request.IsAuthenticated)
+            {
+                if (User.IsInRole("Administrator"))
+                {
+                    <td style="width:235px">
+                        @Html.ActionLink("تعديل", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("تفاصيل", "Details", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("حذف", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+                    </td>
+
+                }
+                if (User.IsInRole("المسئولون"))
+                {
+                    <td style="width:235px">
+
+                        @Html.ActionLink("تعديل", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("تفاصيل", "Details", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("حذف", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+
+                    </td>
+                }
+
+            }
+        </tr>
+    }
+
+</table>
+<h4 class="text-danger">@ViewBag.NotFounf</h4>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+

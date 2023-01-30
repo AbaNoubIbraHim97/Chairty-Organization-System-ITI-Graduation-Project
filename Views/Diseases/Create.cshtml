@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.Diseases
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="CreateForm">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h3 style="margin-right:50px;color:#343a40;font-weight:bold;margin-bottom:30px;">إضافة مرض</h3>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control  s" , Placeholder = "اسم المرض"  } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <p class="text-danger">@ViewBag.Repeat</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col">
+                <input type="submit" value="إضافة" class="btn" id="btnBlue"/>
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("عودة إلي قائمة الأمراض", "Index",null,htmlAttributes: new { id = "GoBack" })
+    </div>
+</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

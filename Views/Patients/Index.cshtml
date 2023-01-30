@@ -1,0 +1,140 @@
+﻿@model IEnumerable<WebApplication1.Models.Patient>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>المرضي</h2>
+*@
+    <br />
+<form method="get" action="/Patients/Search">
+    
+        <div class="container-fluid ">
+            <div class="row ">
+                <div class="col-md-3">
+                    <input type="submit" value="بحث" class="btn  col-md-12" style="background:#3d8dbc;color:white;font-size:16px;font-weight:bolder" />
+                </div> <div class="col-md-3">
+                    @Html.Label("علي قيد الحياة ؟", new { Style="font-size:20px;" })
+                    @Html.CheckBox("isalife", true,new { Style="zoom:1.5"})
+                </div> <div class="col-md-3">
+                    @Html.TextBox("Shepherd", null, new { @class = "form-control ", placeholder = "ادخل اسم رب الأسرة" })
+                </div>
+                <div class="col-md-3 ">
+                    @Html.TextBox("PatientName", null, new { @class = "form-control ", placeholder = "ادخل اسم المريض" })
+                </div>
+
+
+            </div>
+        </div>
+        
+        
+    
+
+</form>
+<br />
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            @Html.ActionLink("إضافة مريض جديد", "Create", null,htmlAttributes: new { @class = "btn btn-primary" })
+
+        }
+        if (User.IsInRole("المسئولون"))
+        {
+            @Html.ActionLink("إضافة مريض جديد", "Create", null,htmlAttributes: new { @class = "btn btn-primary" })
+        }
+
+    }
+
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.SSNNew)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.Shepherd)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.isalife)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        @if (Request.IsAuthenticated)
+        {
+            if (User.IsInRole("Administrator"))
+            {
+                <th>
+
+                </th>
+
+            }
+            if (User.IsInRole("المسئولون"))
+            {
+                <th>
+
+                </th>
+            }
+
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSNNew)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shepherd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isalife)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+           
+
+                @if (Request.IsAuthenticated)
+                {
+                    if (User.IsInRole("Administrator"))
+                    {<td>
+
+    @Html.ActionLink("تعديل", "Edit",new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("تفاصيل", "Details", new { id = item.ID } , htmlAttributes: new { @class = "btn btn-success" }) |
+    @Html.ActionLink("حذف", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger"  })
+</td>
+
+                }
+                if (User.IsInRole("المسئولون"))
+                {<td>
+
+    @Html.ActionLink("تعديل", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("تفاصيل", "Details", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success" }) |
+    @Html.ActionLink("حذف", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+</td>
+                }
+
+                }
+
+            
+        </tr>
+    }
+
+</table>
+<div class="text-center text-danger"><h1>@ViewBag.NotFounf</h1></div>

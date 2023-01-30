@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" id="myNav">
+        <div class="container">
+            <div class="navbar-header navbar-right" >
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("إعمار", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" ,id="logo"})
+            </div>
+            <div class="navbar-collapse collapse ">
+
+                <ul class="nav navbar-nav navbar-right" id="myUl" style="margin-right:50px;">
+
+                    <li>@Html.ActionLink("اتصل بنا", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("من نحن", "About", "Home")</li>
+                    <li>@Html.ActionLink("الرئيسية", "Index", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10" style="font-size:15px; ">
+                @RenderBody()
+            </div>
+            @Html.Partial("_SideBar")
+            @*<div class="col-md-2 f">
+                <ul id="ul">
+                    <li>@Html.ActionLink("المرضي", "Index", "Patients")</li>
+                    <li>@Html.ActionLink("الأمراض", "Index", "Diseases")</li>
+                    <li>@Html.ActionLink("أمراض المرضي", "Createe", "PatientDiseases")</li>
+                    <li>@Html.ActionLink("الأدوية", "Index", "Medicines")</li>
+                    <li>@Html.ActionLink("أدوية المرضي", "Index", "PatientMedicineTests")</li>
+                    <li>@Html.ActionLink("العمليات", "Index", "Surgeries")</li>
+                    <li>@Html.ActionLink("عمليات المرضي", "Index", "PatientSurgeries")</li>
+                    <li>@Html.ActionLink("الصرف المؤقت", "Index", "TemporaryCashings")</li>
+                    <li>@Html.ActionLink("الصرف الشهري", "Index", "MonthlyCachings")</li>
+                    <li>@Html.ActionLink("التبرعات", "Index", "Donations")</li>
+                    <li>@Html.ActionLink("الرصيد", "Index", "Balances")</li>
+                </ul>
+            </div>*@
+
+        </div>
+        @*<div class="row">
+            <div class="col-md-12 Foot">
+                Footer
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </div>
+        </div>*@
+
+
+    </div>
+    @*<div class="container-fluid">
+        
+    </div>*@
+@*<footer class="navbar navbar-fixed-bottom myfooter">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>من نحن؟</h3>
+                <p>
+                    موقع إلكترونى لجمعية خيرية تتمكن من خلاله متابعة أخر الاخبار و التبرع و الوصول للاشخاص الذيين يستحقون التبرع و المشاركة فى الاعمال الخيرية , و يمكن لجميع المشاهدين من متابعة الجمعيات الخيرية , و متابعة النشاطات المختلفة و بذلك تسهل على عميلك التبرع و قضاء وقت مناسب على موقعك .
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h3>روابط هامة</h3>
+                <ul>
+                    <li><a href="#">وظائف للقطاع العام</a></li>
+                    <li><a href="#">وظائف للقطاع الخاص</a></li>
+                    <li><a href="#">وظائف خارج البلاد</a></li>
+                    <li><a href="#">وظائف متنوعة</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>تواصل معنا</h3>
+                <ul>
+                    <li><a href="#"> </a></li>
+                    <li><a href="#">صفحتنا علي فيسبوك</a></li>
+                    <li><a href="#">تابعنا علي تويتر</a></li>
+                    <li><a href="#">شاهدنا علي اليوتيوب</a></li>
+                    <li><a href="#">اترك لنا رسالة</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-fixed-bottom subfooter">جميع الحقوق محفوظة-2020</div>
+</footer>*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

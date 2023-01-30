@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.TemporaryCashing
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>تفاصيل</h2>
+<table style="font-size:20px;" class="table table-bordered">
+    <tr style="display:none"></tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.Patient.Name):<span style="font-weight:bold">
+                @Html.DisplayFor(model => model.Patient.Name)
+            </span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.Medicines.Name):<span style="font-weight:bold">
+                @Html.DisplayFor(model => model.Medicines.Name)
+            </span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.NumberofUnites):<span style="font-weight:bold">
+                @Html.DisplayFor(model => model.NumberofUnites)
+            </span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayName("تاريخ الصرف"):<span style="font-weight:bold">
+                @Html.DisplayFor(model => model.DateCreated)
+            </span>
+        </td>
+    </tr>
+    <tr class="text-right">
+        <td class="text-right">
+            @Html.DisplayNameFor(model => model.Cost):<span style="font-weight:bold">
+                @Html.DisplayFor(model => model.Cost)
+            </span>
+        </td>
+    </tr>
+
+
+</table>
+<br />
+
+<p>
+    @Html.ActionLink("تعديل", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("عودة إلي قائمة المصروفات المؤقتة", "Index")
+</p>
+

@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebApplication1.Models.Diseases>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>قائمة الأمراض</h2>*@
+<br />
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            @Html.ActionLink("إضافة مرض جديد", "Create", null,htmlAttributes: new { @class = "btn btn-primary" })
+
+        }
+        if (User.IsInRole("المسئولون"))
+        {
+            @Html.ActionLink("إضافة مرض جديد", "Create", null,htmlAttributes: new { @class = "btn btn-primary" })
+        }
+
+    }
+
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th class="text-right">
+            @Html.DisplayName("المرض")
+        </th>
+        @if (Request.IsAuthenticated)
+        {
+            if (User.IsInRole("Administrator"))
+            {
+                <th style="width:235px;">
+
+                </th>
+               
+            }
+            if (User.IsInRole("المسئولون"))
+            {
+                <th style="width:235px;">
+
+                </th>
+                
+            }
+
+        }
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            
+<td style="width:235px;">
+
+    @Html.ActionLink("تعديل", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("تفاصيل", "Details", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success" }) |
+    @Html.ActionLink("حذف", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+
+</td>
+
+
+        }
+        if (User.IsInRole("المسئولون"))
+        {
+            
+<td style="width:235px;">
+
+    @Html.ActionLink("تعديل", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("تفاصيل", "Details", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success" }) |
+    @Html.ActionLink("حذف", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+
+</td>
+        }
+
+    }
+</tr>
+}
+
+</table>

@@ -1,0 +1,29 @@
+﻿@model WebApplication1.Models.MedicinesCategory
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>حذف</h2>
+
+<h3 style="color:red;">هل انت متأكد من انك تريد حذف هذا الصنف ؟</h3>
+<div>
+    <table style="font-size:20px;" class="table table-bordered">
+        <tr style="display:none"></tr>
+        <tr class="text-right">
+            <td class="text-right">
+                @Html.DisplayNameFor(model => model.Name) :<span style="font-weight:bold"> @Html.DisplayFor(model => model.Name)</span>
+            </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="حذف" class="btn btn-danger" /> |
+    @Html.ActionLink("عودة إلي قائمة الأصناف", "Index")
+</div>
+    }
+</div>
